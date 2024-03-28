@@ -13,9 +13,12 @@ namespace InternshipProjectWork.Repository
             this.projectDBContext = projectDBContext;
         }
 
+
         public List<logindetails> GetAllUsername()
         {
             return projectDBContext.Logindetails.ToList();
+            //return projectDBContext.Logindetails.Select(x => x.Username).ToList();
+
         }
     }
 }

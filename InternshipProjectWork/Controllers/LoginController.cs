@@ -26,6 +26,7 @@ namespace InternshipProjectWork.Controllers
           
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public object LoginApi(AuthenticationDto authenticationDto)
         {
@@ -40,6 +41,7 @@ namespace InternshipProjectWork.Controllers
             }
         }
 
+        
         private object generateToken(string username, string password)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this._config["Jwt:Key"]));
