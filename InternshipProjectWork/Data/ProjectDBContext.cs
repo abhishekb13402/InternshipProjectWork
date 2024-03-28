@@ -11,5 +11,7 @@ namespace InternshipProjectWork.Data
         }
 
         public DbSet<logindetails> Logindetails{ get; set; }
+
+
     }
 }
