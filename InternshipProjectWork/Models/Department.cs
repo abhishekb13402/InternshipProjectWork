@@ -6,9 +6,11 @@ namespace InternshipProjectWork.Models
     public class Department
     {
         [Key]
-        public int Id { get; set; }
+        public int DepartmentID { get; set; }
 
-        [Column("Name", TypeName = "nvarchar(30)")]
-        public string Name { get; set; }
+        [Column("DeptName", TypeName = "nvarchar(30)")]
+        public string DeptName { get; set; }
+
+        public ICollection<Employee>? Employees { get; set; }
     }
 }

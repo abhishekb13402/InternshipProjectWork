@@ -1,6 +1,7 @@
 ﻿using InternshipProjectWork.Data;
 using InternshipProjectWork.Models;
 using InternshipProjectWork.Models.Dto;
+using Microsoft.EntityFrameworkCore;
 
 namespace InternshipProjectWork.Repository
 {
@@ -14,9 +15,26 @@ namespace InternshipProjectWork.Repository
         }
 
 
-        public object GetAllEmployees()
+        public List<GetEmpDto> GetAllEmployees()
         {
-            return projectDBContext.Employees.ToList();
+            //    return projectDBContext.Employees
+            //        //.Include(x=>x.Department.Name)
+            //        .ToList();
+
+            var result = (from e in projectDBContext.Employees
+                          join d in projectDBContext.Departments
+                          on e.DepartmentID equals d.DepartmentID
+                          select new GetEmpDto{
+                                Id = e.Id,
+                                Name = e.Name,
+                                DateOfJoining = e.DateOfJoining,
+                                DepartmentID = e.DepartmentID,
+                                Email = e.Email,
+                                DeptName = d.DeptName,
+
+                          }).ToList();
+            return result;
+        
         }
 
         public Employee? AddEmployee(Employee employee)

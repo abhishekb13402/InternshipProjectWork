@@ -20,9 +20,9 @@ namespace InternshipProjectWork.Controllers
             employeeRepository = new EmployeeRepository(projectDBContext);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
-        public object GetAllEmployees()
+        public object? GetAllEmployees()
         {
             return employeeRepository.GetAllEmployees();
         }

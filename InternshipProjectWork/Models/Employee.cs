@@ -18,8 +18,11 @@ namespace InternshipProjectWork.Models
         public DateTime DateOfJoining { get; set; }
 
 
+        [ForeignKey("DepartmentID")]
         [Column("DepartmentID")]
         public int DepartmentID { get; set; }
+        public Department? Department { get; set; }
+
 
 
         [EmailAddress]
