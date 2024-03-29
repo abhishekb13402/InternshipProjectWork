@@ -4,6 +4,7 @@ using InternshipProjectWork.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternshipProjectWork.Migrations
 {
     [DbContext(typeof(ProjectDBContext))]
-    partial class ProjectDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240329062512_addtblempdept")]
+    partial class addtblempdept
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,6 +46,7 @@ namespace InternshipProjectWork.Migrations
             modelBuilder.Entity("InternshipProjectWork.Models.Employee", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("Id");
 
@@ -54,9 +58,8 @@ namespace InternshipProjectWork.Migrations
                         .HasColumnType("int")
                         .HasColumnName("DepartmentID");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
+                    b.Property<int>("Email")
+                        .HasColumnType("nvarchar(30")
                         .HasColumnName("Email");
 
                     b.Property<string>("Name")
