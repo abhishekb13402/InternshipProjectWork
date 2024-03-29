@@ -12,6 +12,9 @@ namespace InternshipProjectWork.Data
 
         public DbSet<logindetails> Logindetails{ get; set; }
 
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
 
     }
 }
