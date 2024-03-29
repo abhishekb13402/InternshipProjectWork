@@ -1,7 +1,8 @@
 ﻿using InternshipProjectWork.Data;
 using InternshipProjectWork.Models;
 using InternshipProjectWork.Models.Dto;
-
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace InternshipProjectWork.Repository
 {
     public class UserRepository
@@ -14,10 +15,12 @@ namespace InternshipProjectWork.Repository
         }
 
 
-        public List<logindetails> GetAllUsername()
+        public object GetAllUsername()
         {
-            return projectDBContext.Logindetails.ToList();
-            //return projectDBContext.Logindetails.Select(x => x.Username).ToList();
+            //return projectDBContext.Logindetails.ToList();
+            var usernames = projectDBContext.Logindetails.Select(ld => ld.Username).ToList();
+            return usernames;
+
 
         }
     }
