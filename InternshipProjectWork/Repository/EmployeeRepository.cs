@@ -58,7 +58,5 @@ namespace InternshipProjectWork.Repository
             return $"{initials.ToUpper()}{year}{randomDigits}";
         }
 
-
-
     }
 }
