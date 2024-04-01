@@ -4,6 +4,7 @@ using InternshipProjectWork.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace InternshipProjectWork.Controllers
 {
@@ -20,7 +21,7 @@ namespace InternshipProjectWork.Controllers
             employeeRepository = new EmployeeRepository(projectDBContext);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public object? GetAllEmployees()
         {
