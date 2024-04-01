@@ -37,6 +37,34 @@ namespace InternshipProjectWork.Repository
         
         }
 
+        public object? GetEmployeesBySearchName(string empname)
+        {
+            //var result = projectDBContext.Employees.Where(e => e.Name.Contains(empname))
+            //             .Select(e => new
+            //             {
+            //                 e.Id,
+            //                 e.Name
+
+            //             }).ToList();
+
+            var result = (from e in projectDBContext.Employees
+                          join d in projectDBContext.Departments
+                          on e.DepartmentID equals d.DepartmentID
+                          where e.Name.Contains(empname)
+                          select new GetEmpDto
+                          {
+                              Id = e.Id,
+                              Name = e.Name,
+                              DateOfJoining = e.DateOfJoining,
+                              DepartmentID = e.DepartmentID,
+                              Email = e.Email,
+                              DeptName = d.DeptName,
+
+                          }).ToList();
+
+            return result;
+        }
+
         public Employee? AddEmployee(Employee employee)
         {
             if (employee == null) throw new ArgumentNullException(nameof(employee));
@@ -58,5 +86,6 @@ namespace InternshipProjectWork.Repository
             return $"{initials.ToUpper()}{year}{randomDigits}";
         }
 
+      
     }
 }
