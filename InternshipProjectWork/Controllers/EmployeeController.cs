@@ -22,6 +22,13 @@ namespace InternshipProjectWork.Controllers
         }
 
         [Authorize]
+        [HttpGet("EmpName")]
+        public object? GetEmployeesBySearchName(string empname)
+        {
+            return employeeRepository.GetEmployeesBySearchName(empname);
+        }
+
+        [Authorize]
         [HttpGet]
         public object? GetAllEmployees()
         {
